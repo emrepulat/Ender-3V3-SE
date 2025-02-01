@@ -347,6 +347,13 @@ namespace Language_tr {
   PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER         = _UxGT("Unretr. mm");
   PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER_SWAP    = _UxGT("S Unretr. mm");
   PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVERF        = _UxGT("Unretract V");
+#if ENABLED(HIGH_SPEED)
+  PROGMEM Language_Str MSG_INPUT_SHAPING                   = _UxGT("Input Shaping");
+  PROGMEM Language_Str MSG_SHAPING_A_FREQ                  = LCD_STR_A _UxGT(" frequency");
+  PROGMEM Language_Str MSG_SHAPING_B_FREQ                  = LCD_STR_B _UxGT(" frequency");
+  PROGMEM Language_Str MSG_SHAPING_A_ZETA                  = LCD_STR_A _UxGT(" damping");
+  PROGMEM Language_Str MSG_SHAPING_B_ZETA                  = LCD_STR_B _UxGT(" damping");
+#endif // ENABLED(HIGH_SPEED)
   PROGMEM Language_Str MSG_CONTROL_RETRACT_RECOVER_SWAPF   = _UxGT("S UnRet V");
   PROGMEM Language_Str MSG_AUTORETRACT                     = _UxGT("Oto. Geri Çekme");
   PROGMEM Language_Str MSG_FILAMENT_SWAP_LENGTH            = _UxGT("G.Çekme Boyu");
