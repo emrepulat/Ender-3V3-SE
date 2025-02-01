@@ -1,3 +1,31 @@
+## Firmware Modifications and Enhancements  
+
+### Added Features and Improvements  
+
+- **Enabled Pin Debugging via G-code**  
+- **Enabled 10-Point Grid Leveling** (@eduard-sukharev)  
+- **Enabled Filament Runout Sensor for OctoPrint** (@ssjrocks)  
+  - Removed the "Disable Sensor" prompt  
+  - Replaced the "Purge More" button with a "Continue" button  
+- **Enabled Linear/Pressure Advance** (@queeup)  
+- **Enabled Host Action Commands** (for OctoPrint)  
+- **Enabled PARK_HEAD_ON_PAUSE** (for OctoPrint)  
+- **Enabled FILAMENT_LOAD_UNLOAD_GCODE** (for OctoPrint)  
+- **Increased Maximum Temperature Limits:**  
+  - Nozzle: **260°C → 300°C**  
+  - Bed: **100°C → 120°C**  
+- **Increased Z Homing Speed**  
+- **Increased Maximum Speeds and Accelerations**  
+- **Extended Auto-Leveling to Use a 10x10 Grid** (@eduard-sukharev)
+
+This firmware integrates multiple community enhancements to improve usability, print quality, and hardware capabilities.
+
+NOT TESTED AT ALL!!!
+
+___________________________________________________________________________________________________________________________
+
+
+
 # Marlin 3D Printer Firmware
 
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
