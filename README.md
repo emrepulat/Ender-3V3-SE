@@ -17,11 +17,11 @@
 - **Increased Z Homing Speed**  
 - **Increased Maximum Speeds and Accelerations**  
 - **Extended Auto-Leveling to Use a 10x10 Grid** (@eduard-sukharev)
-- ****Added "Input Shaping" Menu** ** (@eduard-sukharev)
+- **Added "Input Shaping" Menu** ** (@eduard-sukharev)
 
 This firmware integrates multiple community enhancements to improve usability, print quality, and hardware capabilities.
 
-NOT TESTED AT ALL!!!
+****NOT TESTED AT ALL!!!****
 
 ___________________________________________________________________________________________________________________________
 
