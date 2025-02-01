@@ -2,8 +2,7 @@
 
 ### Added Features and Improvements  
 
-- **Enabled Pin Debugging via G-code**  
-- **Enabled 10-Point Grid Leveling** (@eduard-sukharev)  
+- **Enabled 10-Point Grid Leveling** (@aschmitt1909 & @eduard-sukharev)  
 - **Enabled Filament Runout Sensor for OctoPrint** (@ssjrocks)  
   - Removed the "Disable Sensor" prompt  
   - Replaced the "Purge More" button with a "Continue" button  
@@ -16,8 +15,10 @@
   - Bed: **100°C → 120°C**  
 - **Increased Z Homing Speed**  
 - **Increased Maximum Speeds and Accelerations**  
-- **Extended Auto-Leveling to Use a 10x10 Grid** (@eduard-sukharev)
-- **Added "Input Shaping" Menu** ** (@eduard-sukharev)
+- **Extended Auto-Leveling to Use a 10x10 Grid** (@aschmitt1909 & @eduard-sukharev)
+- **Added "Input Shaping" Menu** (@eduard-sukharev) 
+- **Added Auto-Resizing Bed-Leveling Grid Cells** (@eduard-sukharev)
+  - Optimized grid cell size to better fit larger grids on the screen.
 
 This firmware integrates multiple community enhancements to improve usability, print quality, and hardware capabilities.
 
