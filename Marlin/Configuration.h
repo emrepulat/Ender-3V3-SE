@@ -1,5 +1,5 @@
 /**
- * 5000arlin 3D Printer Firmware
+ * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
  *
  * Based on Sprinter and grbl.
@@ -69,7 +69,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "Creality" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "emrepulat" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h   // Path from the root directory (no quotes)
 
 /**
@@ -171,6 +171,7 @@
 #define K8_EXTRUDER             0 //1 是K8挤出机   0 是精灵挤出机
 #define USER_LEVEL_CHECK        1 // 调平校准使能
 #define WUHAN_CHENGE_PLATFORM   1 // 武汉改平台板  20230913_Rock
+#define COMPACT_GRID_VALUES     1 // 0 - original Creality style, 1 - compact style for tight grids
 //打开高速打印的宏之后由于震动补偿功能会高温报警
 
 // Printer's unique ID, used by some programs to differentiate between machines.
@@ -515,15 +516,15 @@
 // Above this temperature the heater will be switched off.
 // This can protect components from overheating, but NOT from shorts and failures.
 // (Use MINTEMP for thermistor short/failure protection.)
-#define HEATER_0_MAXTEMP 275
-#define HEATER_1_MAXTEMP 275
-#define HEATER_2_MAXTEMP 275
-#define HEATER_3_MAXTEMP 275
-#define HEATER_4_MAXTEMP 275
-#define HEATER_5_MAXTEMP 275
-#define HEATER_6_MAXTEMP 275
-#define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      110
+#define HEATER_0_MAXTEMP 300
+#define HEATER_1_MAXTEMP 300
+#define HEATER_2_MAXTEMP 300
+#define HEATER_3_MAXTEMP 300
+#define HEATER_4_MAXTEMP 300
+#define HEATER_5_MAXTEMP 300
+#define HEATER_6_MAXTEMP 300
+#define HEATER_7_MAXTEMP 300
+#define BED_MAXTEMP      120
 #define CHAMBER_MAXTEMP  60
 
 /**
@@ -872,11 +873,11 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 500, 500, 5, 30 }
+#define DEFAULT_MAX_FEEDRATE          { 500, 500, 20, 30 }
 
 #define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 10, 50 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 1000, 1000, 40, 60 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -895,7 +896,7 @@
 #define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
 #if ENABLED(HIGH_SPEED_1) 
-    #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 200, 8000 } // ...or, set your own edit limits
+    #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 8000, 8000 } // ...or, set your own edit limits
   #else 
    #define MAX_ACCEL_EDIT_VALUES       { 3000, 3000, 100, 3000 } // ...or, set your own edit limits
   #endif
@@ -951,7 +952,7 @@
   #endif
 #endif
 #if ENABLED(HIGH_SPEED_1)
-#define DEFAULT_EJERK 5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK 10.0  // May be used by Linear Advance
 #else
 #define DEFAULT_EJERK 5.0  // May be used by Linear Advance
 #endif
@@ -976,7 +977,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+//#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1158,14 +1159,14 @@
 #define PROBING_MARGIN 3 
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_FEEDRATE (160*60)//(80*60)
+#define XY_PROBE_FEEDRATE (200*60)//(80*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (10*60)
+#define Z_PROBE_FEEDRATE_FAST (16*60)
 // #define Z_PROBE_FEEDRATE_FAST (4*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
-#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
+#define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 3)
 
 /**
  * Probe Activation Switch
@@ -1407,14 +1408,14 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-  #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
-  //#define FIL_RUNOUT_PULLUP             // Use internal pullup for filament runout pins.
-  #define FIL_RUNOUT_PULLDOWN             // Use internal pulldown for filament runout pins.
+  #define FIL_RUNOUT_STATE     HIGH        // Pin state indicating that filament is NOT present.
+  #define FIL_RUNOUT_PULLUP             // Use internal pullup for filament runout pins.
+  //#define FIL_RUNOUT_PULLDOWN             // Use internal pulldown for filament runout pins.
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
                                           // This is automatically enabled for MIXING_EXTRUDERs.
 
@@ -1454,7 +1455,7 @@
   // Commands to execute on filament runout.
   // With multiple runout sensors use the %c placeholder for the current tool in commands (e.g., "M600 T%c")
   // NOTE: After 'M412 H1' the host handles filament runout and this script does not apply.
-  #define FILAMENT_RUNOUT_SCRIPT "M600"
+  //#define FILAMENT_RUNOUT_SCRIPT "M600"
 
   // After a runout is detected, continue printing this length of filament
   // before executing the runout script. Useful for a sensor at the end of
@@ -1576,7 +1577,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 4
+  #define GRID_MAX_POINTS_X 10
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -1717,7 +1718,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (10*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
